@@ -7,3 +7,6 @@ npm-debug.log
 
 # Environment variables
 .env
+
+# Flightplan
+flightplan.js
