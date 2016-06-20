@@ -4,7 +4,21 @@ class App extends React.Component {
     this.state = {};
   }
 
+  componentDidMount() {
+    $('.group input, .group textarea').focusout(function() {
+      var text_val = $(this).val();
+
+      if (text_val === '') {
+        $(this).removeClass('has-value');
+      } else {
+        $(this).addClass('has-value');
+      }
+    });
+  }
+
   render() {
+
+
     return (
       <div className="container">
         <div>
