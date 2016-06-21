@@ -32,7 +32,7 @@ function ToastBuilder(options) {
         var $this = $(this);
         var width = $this.outerWidth() + 20;
         $this.css({
-          'right': '-' + width + 'px',
+          'left': '-' + width + 'px',
           'opacity': 0
         });
         next();
@@ -52,4 +52,4 @@ var myOptions = {
   target: 'body'
 };
 
-window.showtoast = new ToastBuilder(myOptions);
+window.showToast = new ToastBuilder(myOptions);
