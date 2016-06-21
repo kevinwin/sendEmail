@@ -1,3 +1,4 @@
+
 class App extends React.Component {
   constructor(props) {
     super(props);
@@ -14,6 +15,14 @@ class App extends React.Component {
         $(this).addClass('has-value');
       }
     });
+
+    $("button").on("click", function(e) {
+      e.preventDefault();
+      AJAXSubmit(document.querySelector('form'));
+      showToast();
+      return false;
+    });
+
   }
 
   render() {
@@ -27,7 +36,7 @@ class App extends React.Component {
         <div className="heading">
           <h1>Email Somebody</h1>
         </div>
-        <form action="http://localhost:3000/send" method="post">
+        <form className="email-form" action="http://emailsomebody.com:3000/send" method="post">
             <div className="group">
                 <input type="email" name="user_mail" /><span className="highlight"></span><span className="bar"></span>
                 <label for="mail">From:</label>
