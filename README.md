@@ -107,12 +107,12 @@ NOTE: Any untracked files must be added with `git add <UNTRACKED_FILE>` if you w
 - ES6
 
 ## KQED Notes
-- Description: See [Introduction](#introduction):
+- Description: A full-stack application built to send email.
 - UI features:
   - Material Design toasts
   - Fields shift on focus
   - Automatic field focus on page load, auto-clear on successful email submission
-- Other App Features:
+- Backend Features:
   - Form processing on api server
   - Internal failsafe with clusters and alternative email service [Postmark]
   - One command deployment using flightplan and upstart [/etc/init]
@@ -123,7 +123,7 @@ NOTE: Any untracked files must be added with `git add <UNTRACKED_FILE>` if you w
 - Note on Tests: Much time was spent on experimenting with https in production environments and navigating the fun, strange world of deployment. The test presented in the test folder isn't representative of what should be tested but offers a starting place for testing.
 - [Linkedin](https://www.linkedin.com/in/kevinhungnguyen)
 - [Resume](https://kevinwin.com/resume)
-- Hosted Site: [Email Somebody](http://emailsomebody.com) (deployed on Digital Ocean)
+- Hosted Application: [Email Somebody](http://emailsomebody.com) (deployed on Digital Ocean)
 
 
 
