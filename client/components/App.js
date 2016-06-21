@@ -6,6 +6,11 @@ class App extends React.Component {
   }
 
   componentDidMount() {
+    
+    // Focus input field on load
+    document.getElementsByTagName('input')[0].focus();
+
+    // Ripple effect
     $('.group input, .group textarea').focusout(function() {
       var text_val = $(this).val();
 
@@ -16,6 +21,7 @@ class App extends React.Component {
       }
     });
 
+    // Submit and Toast
     $("button").on("click", function(e) {
       e.preventDefault();
       AJAXSubmit(document.querySelector('form'));
