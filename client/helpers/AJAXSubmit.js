@@ -1,11 +1,18 @@
+  // Polyfill courtesy of MDN
 
   window.AJAXSubmit = (function() {
 
     function ajaxSuccess() {
-      // /* console.log("AJAXSubmit - Success!"); */
+       console.log("AJAXSubmit - Success!");
+       document.getElementsByTagName('form')[0].reset();
+       document.getElementsByTagName('input')[0].focus();
       // alert(this.responseText);
       /* you can get the serialized data through the "submittedData" custom property: */
       /* alert(JSON.stringify(this.submittedData)); */
+    }
+
+    function clearFormFields() {
+      document.getElementsByTagName('form')[0].reset()
     }
 
     function submitData(oData) {
