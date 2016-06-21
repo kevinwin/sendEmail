@@ -1,8 +1,8 @@
-$(function() {
-  var AJAXSubmit = (function() {
+
+  window.AJAXSubmit = (function() {
 
     function ajaxSuccess() {
-      /* console.log("AJAXSubmit - Success!"); */
+      // /* console.log("AJAXSubmit - Success!"); */
       // alert(this.responseText);
       /* you can get the serialized data through the "submittedData" custom property: */
       /* alert(JSON.stringify(this.submittedData)); */
@@ -106,5 +106,5 @@ $(function() {
     };
 
   })()
-});
+
 
