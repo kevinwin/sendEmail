@@ -21,9 +21,14 @@ if (cluster.isMaster) {
   app.use(bodyParser.urlencoded({ extended: false }));
   app.use(bodyParser.json());
 
+  app.use(function(req, res, next) {
+    res.header("Access-Control-Allow-Origin", "*");
+    res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept");
+    next();
+  });
+
   app.post('/send', function(req, res) {
     if (req.body) {
-      console.log('The request body is : ', req.body);
       var data = {
         from: req.body.user_mail || '',
         to: req.body.target_user_mail || '',
@@ -31,29 +36,28 @@ if (cluster.isMaster) {
         text: req.body.message || ''
       };
 
-      // Send email via postmark
-      // postmark.sendEmail({
-      //         "From": "mail@kevinwin.com",
-      //         "To": "mail@kevinwin.com",
-      //         "Subject": "Hello World!", 
-      //         "TextBody": req.body.user_message
-      //     }, function(error, success) {
-      //         if(error) {
-      //             console.error("Unable to send via postmark: " + error.message);
-      //             return;
-      //         }
-      //         console.info("Sent to postmark for delivery");
-      //     });
 
       mailgun.messages().send(data, function (error, body) {
-        error = true;
         if (error) {
-          console.error(error);
+          console.error('Error: %d\n Trying Postmark', error);
+          // Send email via postmark
+          postmark.sendEmail({
+                  "From": "mail@kevinwin.com", // Postmark doesn't allow for spoofing
+                  "To": req.body.target_user_mail,
+                  "Subject": req.body.subject, 
+                  "TextBody": req.body.message
+              }, function(error, success) {
+                  if(error) {
+                      console.error("Unable to send via postmark: " + error.message);
+                      return;
+                  }
+                  console.info("Sent to postmark for delivery");
+              });
         }
         console.log(body);
+        res.end('');
       });
     }
-    res.redirect('http://localhost:8000');
   });
 
   app.listen(port, function() {
