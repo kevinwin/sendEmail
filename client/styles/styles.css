@@ -169,6 +169,7 @@ input:focus ~ .highlight, textarea:focus ~ .highlight {
   top: -100px;
   left: 15px;
   opacity: 0;
+  border-radius: 5px;
   transition: all 0.4s ease-out;
 }
 
